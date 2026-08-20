@@ -1,50 +1,39 @@
 # Fushibol · Landing page
 
-Pagina de aterrizaje de **Fushibol**, la app del futbol amateur en Bolivia: arma
-tu equipo, entra a torneos, reta a otros equipos y lleva tus estadisticas como un
-profesional.
+Pagina de aterrizaje de **Fushibol**, la app del futbol amateur en Bolivia.
 
-- **App web:** https://eduardo123-test-golazo.expo.app
-- **Estilo:** fanzine / programa de partido (neobrutalista). Tipografia Barlow
-  Condensed, monoespaciada para los datos, papel tiza + verde botella + naranja.
+- **Sitio en vivo:** https://fushibol.com
+- **App:** https://app.fushibol.com
+- **Estilo:** minimalista / ensayo fotografico. Fondo casi negro, fotografia a
+  todo el ancho, tipografia condensada (Barlow Condensed) y mucho espacio.
 
-> El dominio de marca sera **fushibol.com** (en gestion).
+## Como funciona
 
-## Ver la pagina
-
-`index.html` es un unico archivo autocontenido (fuentes e imagenes van embebidas
-como data URIs), asi que se abre directo en el navegador o se sirve tal cual.
+`index.html` es una pagina estatica hecha a mano que referencia los archivos de
+`assets/` directamente (fotos, fuentes, capturas). **No hay paso de build**: se
+edita `index.html` y se sube. GitHub Pages sirve todo el repo.
 
 ```bash
-python -m http.server 8000
-# luego abrir http://localhost:8000
-```
-
-### Publicar en GitHub Pages
-
-En **Settings > Pages**, elegir la rama `main` y la carpeta raiz (`/`). La pagina
-queda disponible en `https://eduardoshande.github.io/Golazo-landing-page/`, y luego
-se puede apuntar el dominio `fushibol.com` a GitHub Pages.
-
-## Regenerar `index.html`
-
-El HTML final se genera desde `src/template.html` y los binarios de `assets/`.
-Si editas el template o cambias una captura, reconstruye con:
-
-```bash
-python src/build.py
+python -m http.server 8000   # abrir http://localhost:8000
 ```
 
 ## Estructura
 
 ```
-index.html            Pagina final autocontenida (generada, lista para desplegar)
-src/template.html     Plantilla editable (tokens __FONT__ / __SHOT_*__ / __APP__)
-src/build.py          Embebe fuentes e imagenes y escribe index.html
-assets/               Logo, capturas reales de la app y fuentes Barlow Condensed
+index.html            La pagina (editable directo)
+CNAME                 Dominio propio (fushibol.com)
+assets/
+  fonts/              Barlow Condensed (500/700/900)
+  hero.jpg, cta.jpg   Fotos full-bleed
+  feat-1..4.jpg       Fotos de las secciones
+  cs-1..6.jpg         Contact sheet
+  shot-*.png          Capturas reales de la app
+  logo.png            Logo
 ```
 
-## Creditos
+Las fotos salen de `../images` (stock de futbol) procesadas con PIL.
 
-- Tipografia: [Barlow Condensed](https://fonts.google.com/specimen/Barlow+Condensed) (SIL Open Font License).
-- Capturas: pantallas reales de la app Fushibol.
+## Publicar en GitHub Pages
+
+Settings > Pages > rama `main`, carpeta raiz. El dominio `fushibol.com` se toma
+del archivo `CNAME`.
