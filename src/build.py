@@ -23,6 +23,9 @@ repl = {
     "__SHOT_PERFIL__": data_uri(ASSETS / "shot-perfil.png", "image/png"),
     "__SHOT_RANKING__": data_uri(ASSETS / "shot-ranking.png", "image/png"),
     "__SHOT_EVENTOS__": data_uri(ASSETS / "shot-eventos.png", "image/png"),
+    "__PHOTO_ACTION__": data_uri(ASSETS / "photo-action.jpg", "image/jpeg"),
+    "__PHOTO_BAND__": data_uri(ASSETS / "photo-band.jpg", "image/jpeg"),
+    "__SILHOUETTE__": data_uri(ASSETS / "silhouette.png", "image/png"),
     "__APP__": APP_URL,
 }
 

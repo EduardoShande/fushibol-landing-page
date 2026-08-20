@@ -238,6 +238,23 @@
     .statrow { width: 100%; }
     .btn-lg { font-size: 20px; padding: 16px 22px 13px; }
   }
+  /* ===== fotos reales ===== */
+  .matchday { position: relative; border-bottom: 3px solid var(--ink); overflow: hidden; background: var(--ink); }
+  .matchday .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+  .matchday .mask { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,12,9,0.92), rgba(11,12,9,0.5) 55%, rgba(11,12,9,0.15)); }
+  .matchday .wrap { position: relative; padding: 100px 26px; }
+  .matchday .kicker { color: var(--chalk-dim); }
+  .matchday h2 { color: var(--chalk); font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 6.4vw, 82px); line-height: 0.9; margin: 14px 0 0; max-width: 15ch; }
+  .matchday h2 em { font-style: normal; color: var(--flame); }
+  .matchday .silo { position: absolute; right: 3%; bottom: 0; width: min(42%, 460px); aspect-ratio: 760 / 427; background: var(--flame); -webkit-mask: url(__SILHOUETTE__) no-repeat right bottom / contain; mask: url(__SILHOUETTE__) no-repeat right bottom / contain; opacity: 0.92; }
+  .print { position: relative; border: 3px solid var(--ink); box-shadow: var(--shadow); overflow: hidden; margin: 0 0 40px; aspect-ratio: 16 / 7; }
+  .print img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .print .cap { position: absolute; left: 0; bottom: 0; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; background: var(--flame); color: #fff; padding: 7px 12px; }
+  @media (max-width: 560px) {
+    .matchday .wrap { padding: 64px 18px; }
+    .matchday .silo { opacity: 0.45; width: 62%; }
+    .print { aspect-ratio: 4 / 3; }
+  }
 </style>
 
 <header class="nav">
@@ -298,6 +315,10 @@
       <h2>Tus pichangas del finde, convertidas en una liga</h2>
       <p>Juegas cada semana, pero no queda registro de nada. Fushibol le pone estructura al futbol amateur: equipos, torneos, tabla de goleadores y el nivel real de cada jugador. Sin planillas de WhatsApp ni cuadernos.</p>
     </div>
+    <div class="print">
+      <img src="__PHOTO_ACTION__" alt="Dos jugadores disputando el balon en una cancha de barrio" />
+      <span class="cap">Futbol de barrio, de verdad</span>
+    </div>
     <div class="whatis">
       <div>
         <span class="n">01 / JUEGAS</span>
@@ -346,6 +367,16 @@
         <svg class="arrow" style="left:74%;" viewBox="0 0 60 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h50m0 0-9-8m9 8-9 8"/></svg>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="matchday">
+  <img class="bg" src="__PHOTO_BAND__" alt="" />
+  <div class="mask"></div>
+  <div class="silo"></div>
+  <div class="wrap">
+    <span class="kicker"><span class="sq"></span> Cada fin de semana</span>
+    <h2>El futbol de tu barrio <em>no espera</em> a nadie</h2>
   </div>
 </section>
 
