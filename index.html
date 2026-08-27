@@ -4,10 +4,21 @@
 <meta charset="utf-8" />
 <title>Fushibol</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="La app del futbol amateur en Bolivia. Arma tu equipo, entra a torneos y reta a otros equipos. Fushibol lleva tus goles, tu nivel y tu ranking." />
+<meta name="description" content="La app del futbol amateur en Bolivia. Arma tu equipo, entra a torneos y encuentra canchas y pichangas cerca de ti. Fushibol lleva tus goles, tu nivel y tu ranking. Gratis." />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="apple-touch-icon" href="assets/favicon.png" />
 <meta name="theme-color" content="#0B0B0C" />
+<!-- Vista previa al compartir el enlace (WhatsApp, redes) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Fushibol" />
+<meta property="og:title" content="Fushibol · El futbol de tu barrio, en serio" />
+<meta property="og:description" content="Arma tu equipo, entra a torneos y encuentra canchas y pichangas cerca de ti. Gratis, para toda Bolivia." />
+<meta property="og:image" content="https://fushibol.com/assets/hero.jpg" />
+<meta property="og:url" content="https://fushibol.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fushibol · El futbol de tu barrio, en serio" />
+<meta name="twitter:description" content="Arma tu equipo, entra a torneos y encuentra canchas y pichangas cerca de ti. Gratis." />
+<meta name="twitter:image" content="https://fushibol.com/assets/hero.jpg" />
 <style>
   @font-face { font-family:'Barlow Condensed'; font-weight:500; font-style:normal; font-display:swap; src:url('assets/fonts/BarlowCondensed_500Medium.ttf') format('truetype'); }
   @font-face { font-family:'Barlow Condensed'; font-weight:700; font-style:normal; font-display:swap; src:url('assets/fonts/BarlowCondensed_700Bold.ttf') format('truetype'); }
@@ -15,7 +26,7 @@
 
   :root{
     --bg:#0B0B0C; --bg2:#0F0F11; --text:#ECEBE4; --muted:#8C8C83; --faint:#57574F;
-    --line:rgba(255,255,255,0.10); --accent:#34C06B; --maxw:1180px;
+    --line:rgba(255,255,255,0.10); --accent:#8B5CF6; --accent2:#A78BFA; --maxw:1180px;
     --display:'Barlow Condensed','Arial Narrow',sans-serif;
     --body:'Helvetica Neue',Helvetica,Arial,system-ui,sans-serif;
     --mono:ui-monospace,'SF Mono','Roboto Mono',Menlo,Consolas,monospace;
@@ -32,9 +43,9 @@
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted);display:inline-block;}
   .accent{color:var(--accent);}
 
-  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:.02em;
-    padding:13px 26px;border-radius:2px;background:var(--accent);color:#04240F;transition:background .2s ease,transform .2s ease;}
-  .btn:hover{background:#43d67d;transform:translateY(-1px);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:.02em;
+    padding:14px 28px;border-radius:4px;background:var(--accent);color:#fff;transition:background .2s ease,transform .2s ease;}
+  .btn:hover{background:var(--accent2);transform:translateY(-1px);}
   .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);}
   .btn.ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.25);}
   .arrowlink{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;transition:color .2s;}
@@ -60,14 +71,25 @@
   .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
   .hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.55) 0%,rgba(11,11,12,.15) 30%,rgba(11,11,12,.35) 62%,rgba(11,11,12,.96) 100%);}
   .hero .wrap{position:relative;padding-bottom:9vh;}
-  .hero h1{font-size:clamp(52px,10vw,150px);font-weight:700;margin:18px 0 0;max-width:13ch;color:#fff;}
-  .hero .cta-row{display:flex;align-items:center;gap:26px;margin-top:34px;flex-wrap:wrap;}
+  .hero h1{font-size:clamp(46px,9.5vw,150px);font-weight:700;margin:18px 0 0;max-width:13ch;color:#fff;}
+  .hero-sub{font-size:clamp(17px,2.2vw,22px);color:#D8D7CF;max-width:30ch;margin:20px 0 0;line-height:1.45;}
+  .hero .cta-row{display:flex;align-items:center;gap:22px;margin-top:30px;flex-wrap:wrap;}
+  .trust{margin-top:22px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
   .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);}
 
   /* ===== statement ===== */
   .statement{padding:16vh 0;}
   .statement .lead{font-family:var(--display);font-weight:500;font-size:clamp(26px,4vw,46px);line-height:1.16;letter-spacing:-.005em;max-width:20ch;color:var(--text);}
   .statement .lead b{color:#fff;font-weight:700;}
+
+  /* ===== steps (como funciona) ===== */
+  .steps{padding:10vh 0;border-top:1px solid var(--line);}
+  .steps .eyebrow{margin-bottom:34px;}
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,4vw,44px);}
+  .step{border-top:2px solid var(--accent);padding-top:22px;}
+  .step-n{font-family:var(--display);font-weight:900;font-size:44px;color:var(--accent);line-height:1;}
+  .step h3{font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,32px);margin:10px 0 0;letter-spacing:-.01em;}
+  .step p{color:var(--muted);font-size:16.5px;margin:12px 0 0;max-width:34ch;}
 
   /* ===== features ===== */
   .feature{padding:9vh 0;border-top:1px solid var(--line);}
@@ -127,13 +149,22 @@
     .grid{grid-template-columns:repeat(3,1fr);}
     .phones .mid{transform:none;}
     .statement{padding:12vh 0;}
+    .steps-grid{grid-template-columns:1fr;gap:30px;}
   }
   @media (max-width:480px){
     body{font-size:16px;}
     .wrap{padding:0 20px;}
-    .hero{height:92svh;}
+    .hero{height:auto;min-height:88svh;padding-top:96px;}
+    .hero .wrap{padding-bottom:12vh;}
     .grid{grid-template-columns:repeat(2,1fr);}
     .nav-cta a.enter{display:none;}
+    /* CTAs a ancho completo y facil de tocar en el celular */
+    .cta-row{flex-direction:column;align-items:stretch;gap:14px;width:100%;}
+    .cta-row .btn{width:100%;font-size:18px;padding:16px 22px;}
+    .cta-row .arrowlink{align-self:center;padding:6px;}
+    .hero-sub{max-width:100%;}
+    .scroll-hint{display:none;}
+    .foot{gap:22px;}
   }
 </style>
 </head>
@@ -156,17 +187,30 @@
   <div class="wrap">
     <span class="eyebrow">Futbol amateur &middot; Bolivia</span>
     <h1>El futbol de tu barrio, en serio.</h1>
+    <p class="hero-sub">Arma tu equipo, entra a torneos y encuentra canchas y pichangas cerca de ti. Todo en una sola app.</p>
     <div class="cta-row">
       <a class="btn" href="https://app.fushibol.com/registro">Crear cuenta gratis</a>
-      <a class="arrowlink" href="#que-es">Que es Fushibol &darr;</a>
+      <a class="arrowlink" href="#que-es">Como funciona &darr;</a>
     </div>
+    <div class="trust">Gratis &middot; Para toda Bolivia &middot; Sin comisiones</div>
   </div>
   <span class="scroll-hint">Scroll</span>
 </section>
 
 <section class="statement" id="que-es">
   <div class="wrap">
-    <p class="lead reveal">Convertimos las pichangas del finde en una liga de verdad. <b>Equipos, torneos, tabla de goleadores y el nivel real de cada jugador</b>. Todo en un solo lugar.</p>
+    <p class="lead reveal">Convertimos las pichangas del finde en una liga de verdad. <b>Equipos, torneos, canchas cerca de ti y el nivel real de cada jugador</b>. Todo en un solo lugar.</p>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <span class="eyebrow reveal">Como funciona</span>
+    <div class="steps-grid">
+      <div class="step reveal"><span class="step-n">1</span><h3>Crea tu cuenta</h3><p>Gratis y en menos de un minuto. Arma tu perfil de jugador.</p></div>
+      <div class="step reveal"><span class="step-n">2</span><h3>Arma o unete a un equipo</h3><p>Invita a tus amigos, o entra a uno que esta reclutando cerca tuyo.</p></div>
+      <div class="step reveal"><span class="step-n">3</span><h3>Juega y sube de nivel</h3><p>Entra a torneos, encuentra canchas y pichangas, y suma goles, XP y ranking.</p></div>
+    </div>
   </div>
 </section>
 
@@ -198,10 +242,10 @@
   <div class="f-inner">
     <div class="media reveal"><img src="assets/feat-3.jpg" loading="lazy" alt="Arquero volando para atajar" /></div>
     <div class="reveal">
-      <span class="idx">03 &mdash; Retos</span>
-      <h2>Reta a otros equipos</h2>
-      <p>Desafia directamente a otro equipo, coordina cancha y horario, y contacta al capitan rival por WhatsApp.</p>
-      <div class="mini">Desafios &middot; Check-in &middot; Reputacion</div>
+      <span class="idx">03 &mdash; Cerca de ti</span>
+      <h2>Canchas y pichangas cerca</h2>
+      <p>Encuentra las canchas mas cercanas a donde estas, con como llegar en un toque, y sumate a pichangas abiertas tengas equipo o no.</p>
+      <div class="mini">Canchas publicas &middot; Pichangas &middot; Como llegar</div>
     </div>
   </div>
 </section>
